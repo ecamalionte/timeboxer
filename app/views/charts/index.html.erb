@@ -1,0 +1,22 @@
+<h1> Burnup Chart</h1>
+<p> This is an example of a Throughput Chart </p>
+
+
+<%= column_chart [
+  { name: "Expected", data: @burnup.linear_projection },
+  { name: "Real World", data: @burnup.real_data }
+], id: 'burnup'
+%>
+
+
+
+<script>
+  var canvas = $('canvas')[0];
+  var context = canvas.getContext('2d');
+
+  context.beginPath();
+  context.moveTo(<%= @burnup.timebox_cicles * 63 %> , 32);
+  context.lineTo(<%= @burnup.timebox_cicles * 63 %>, 272);
+  context.stroke();
+  context.fillText('Time Box', <%= @burnup.timebox_cicles * 63 %>, 15);
+</script>
