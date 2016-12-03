@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Total de Cards:" %>
+    <%= f.label "Total Cards:" %>
     <%= f.text_field :total_cards %>
   </div>
 
@@ -22,12 +22,12 @@
   </div>
 
   <div class="field">
-    <%= f.label "Projeção de Vazão:" %>
+    <%= f.label "Throughput projection (cards/week):" %>
     <%= f.text_field :throughput_projection %>
   </div>
-  
+
   <div class="field">
-    <%= f.label "Dado Histórico de Vazão (1 4 5 3 2):" %>
+    <%= f.label "Real World series data (format: 1 4 5 3 2):" %>
     <%= f.text_field :input_real_data %>
   </div>
 

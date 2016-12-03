@@ -1,5 +1,7 @@
-<h1> Burnup Chart</h1>
-<p> This is an example of a Throughput Chart </p>
+<h1>Timeboxer</h1>
+<p>Fill all the information that you have about the Project and visualize the Chart</p>
+
+<%= render 'form', burnup: @burnup %>
 
 
 <%= column_chart [
@@ -8,7 +10,6 @@
 ], id: 'burnup', width: "800px", height: "500px"
 %>
 
-<%= render 'form', burnup: @burnup %>
 
 <script type="text/javascript">
   var canvas = $('canvas')[0];

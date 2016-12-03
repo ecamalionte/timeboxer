@@ -21,7 +21,7 @@ class Burnup
   include ActiveModel::Model
   attr_accessor :throughput_projection, :total_cards,  :timebox_cicles, :input_real_data
 
-  def initialize(throughput_projection=1, total_cards=1, timebox_cicles=1, input_real_data="1 2")
+  def initialize(throughput_projection=3, total_cards=100, timebox_cicles=24, input_real_data="0 0 3 4 5 1 4 5")
     @throughput_projection = throughput_projection ? throughput_projection.to_i : 1
     @total_cards = total_cards ? total_cards.to_i : 100
     @timebox_cicles = timebox_cicles ? timebox_cicles.to_i : 1
