@@ -5,18 +5,27 @@
 <%= column_chart [
   { name: "Expected", data: @burnup.linear_projection },
   { name: "Real World", data: @burnup.real_data }
-], id: 'burnup'
+], id: 'burnup', width: "800px", height: "500px"
 %>
 
+<%= render 'form', burnup: @burnup %>
 
-
-<script>
+<script type="text/javascript">
   var canvas = $('canvas')[0];
   var context = canvas.getContext('2d');
 
-  context.beginPath();
-  context.moveTo(<%= @burnup.timebox_cicles * 63 %> , 32);
-  context.lineTo(<%= @burnup.timebox_cicles * 63 %>, 272);
-  context.stroke();
-  context.fillText('Time Box', <%= @burnup.timebox_cicles * 63 %>, 15);
+  function drawTimeBox(){
+    context.beginPath();
+    context.moveTo(<%= calculate_timebox_coordinate %> , 48);
+    context.lineTo(<%= calculate_timebox_coordinate %>, 439);
+    context.fillText('Time Box', <%= calculate_timebox_coordinate %>, 33);
+    context.stroke();
+  }
+
+  canvas.addEventListener('mousemove', function(evt) {
+    drawTimeBox();
+  }, false);
+
+  drawTimeBox();
+
 </script>

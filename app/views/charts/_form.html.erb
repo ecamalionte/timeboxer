@@ -1,0 +1,37 @@
+<%= form_for(burnup, url: { action: "create"}) do |f| %>
+  <% if burnup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(burnup.errors.count, "error") %> prohibited this burnup from being saved:</h2>
+
+      <ul>
+      <% burnup.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Total de Cards:" %>
+    <%= f.text_field :total_cards %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Time Box:" %>
+    <%= f.text_field :timebox_cicles %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Projeção de Vazão:" %>
+    <%= f.text_field :throughput_projection %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "Dado Histórico de Vazão (1 4 5 3 2):" %>
+    <%= f.text_field :input_real_data %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
