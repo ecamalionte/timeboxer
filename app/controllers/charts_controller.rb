@@ -11,7 +11,6 @@ class ChartsController < ApplicationController
     render :index
   end
 
-
   def filter_params
     params.require(:burnup).permit(:throughput_projection, :total_cards, :timebox_cicles, :input_real_data)
   end
@@ -19,6 +18,7 @@ end
 
 class Burnup
   include ActiveModel::Model
+  
   attr_accessor :throughput_projection, :total_cards,  :timebox_cicles, :input_real_data
 
   def initialize(throughput_projection=3, total_cards=100, timebox_cicles=24, input_real_data="0 0 3 4 5 1 4 5")
