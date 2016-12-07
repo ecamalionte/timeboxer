@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require tether
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require Chart.bundle
 //= require chartkick

@@ -13,7 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'chartkick'
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'virtus'
 
 source 'https://rails-assets.org' do

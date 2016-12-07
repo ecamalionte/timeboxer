@@ -195,7 +195,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap
+  bootstrap (~> 4.0.0.alpha5)
   byebug
   chartkick
   coffee-rails (~> 4.1.0)
