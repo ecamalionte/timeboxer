@@ -1,12 +1,12 @@
-<h1>Timeboxer</h1>
-<p>Fill all the information that you have about the Project and visualize the Chart</p>
-
-<%= render 'form', burnup: @burnup %>
-
+<div class="jumbotron">
+  <!-- h1>Timeboxer</h1 -->
+  <p class="lead">Fill all the information that you have about the Project and visualize the Chart</p>
+  <%= render 'form', burnup: @burnup %>
+</div>
 
 <%= column_chart [
-  { name: "Expected", data: @burnup.linear_projection },
-  { name: "Real World", data: @burnup.real_data }
+  { name: "Linear Prediction", data: @burnup.linear_projection },
+  { name: "Real World", data: @burnup.real_data },
 ], id: 'burnup', width: "800px", height: "500px"
 %>
 

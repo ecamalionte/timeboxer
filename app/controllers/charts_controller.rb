@@ -26,8 +26,22 @@ class Burnup
   end
 
   def real_data
+    accumulated_format format_input
+  end
+
+  def non_linear_projection
+    chunck_of_cards = format_input.sum
+    repetitions = total_cards / chunck_of_cards
     points = []
-    format_input.each_with_index.reduce(0) do |sum, (value, i)|
+    repetitions.times do
+      points = points + format_input
+    end
+    accumulated_format points
+  end
+
+  def accumulated_format list
+    points = []
+    list.each_with_index.reduce(0) do |sum, (value, i)|
       points << ["week-#{i+1}", sum + value]
       sum + value
     end
