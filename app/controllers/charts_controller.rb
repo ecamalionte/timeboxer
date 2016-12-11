@@ -89,4 +89,14 @@ class Burnup
     end
     data
   end
+
+  def max_of_weeks
+    charts = build_data
+    max = 0
+    charts.each do |chart|
+      current = chart[:data].count
+      max = current if current > max
+    end
+    max
+  end
 end

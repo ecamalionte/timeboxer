@@ -9,8 +9,8 @@
 <script type="text/javascript">
   var canvas = $('canvas')[0];
   var context = canvas.getContext('2d');
-  var total_cicles = <%= @burnup.total_cicles %>;
   var timebox_cicles = <%= @burnup.timebox_cicles %>;
+  var max_of_weeks = <%= @burnup.max_of_weeks %>;
 
   function drawTimeBox(){
     context.beginPath();
@@ -21,8 +21,8 @@
   }
 
   function calculate_x_for_timebox(){
-    pixels_per_cicle = canvas.width / total_cicles
-    return pixels_per_cicle * timebox_cicles
+    pixels_per_cicle = canvas.width / max_of_weeks;
+    return pixels_per_cicle * timebox_cicles;
   }
 
   canvas.addEventListener('mousemove', function(evt) {
