@@ -9,7 +9,7 @@ class ChartsController < ApplicationController
   end
 
   def filter_params
-    params.require(:burnup).permit(:throughput_projection, :total_cards, :timebox_cicles, :input_real_data)
+    params.require(:burnup).permit(:throughput_projection, :total_cards, :timebox_cicles, :input_real_data, :algorithm)
   end
 end
 
@@ -20,6 +20,7 @@ class Burnup
   attribute :total_cards, Integer, default: 100
   attribute :timebox_cicles, Integer, default: 24
   attribute :input_real_data, String, default: '0 0 2 5 6'
+  attribute :algorithm, String, default: 'none'
 
   def linear_projection
     n = total_cards
@@ -74,5 +75,18 @@ class Burnup
 
   def format_input
     input_real_data ? input_real_data.split(' ').map(&:to_i) : []
+  end
+
+  def build_data
+    data = [ { name: "Linear Prediction", data: linear_projection },
+             { name: "Real World", data: real_data } ]
+
+    case algorithm
+    when 'repetition'
+      data << { name: "Repetition Prediction", data: repetition_projection }
+    when 'random'
+      data << { name: "Random Prediction", data: random_projection }
+    end
+    data
   end
 end

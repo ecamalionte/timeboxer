@@ -1,17 +1,10 @@
 <div class="jumbotron">
   <!-- h1>Timeboxer</h1 -->
-  <p class="lead">Fill all the information that you have about the Project and visualize the Chart</p>
+  <p class="lead">Preencha todas as informações disponíveis sobre o projeto e observe o gráfico gerado abaixo</p>
   <%= render 'form', burnup: @burnup %>
 </div>
 
-<%= column_chart [
-  { name: "Linear Prediction", data: @burnup.linear_projection },
-  { name: "Real World", data: @burnup.real_data },
- # { name: "Repetition Prediction", data: @burnup.repetition_projection },
-  { name: "Random Prediction", data: @burnup.random_projection },
-], id: 'burnup', width: "1200px", height: "500px"
-%>
-
+<%= column_chart @burnup.build_data, id: 'burnup', width: "1200px", height: "500px" %>
 
 <script type="text/javascript">
   var canvas = $('canvas')[0];

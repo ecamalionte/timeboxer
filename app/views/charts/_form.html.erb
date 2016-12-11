@@ -13,28 +13,33 @@
 
   <div class="form-group row">
     <div class="col-xs-2">
-      <%= f.label "Total Cards:", class: 'col-form-label' %>
+      <%= f.label "Total de Cards:", class: 'col-form-label' %>
     </div>
     <div class="col-xs-2">
-      <%= f.text_field :total_cards, class: 'form-control', placeholder: 'Total Cards' %>
+      <%= f.text_field :total_cards, class: 'form-control', placeholder: 'Total de Cards' %>
     </div>
     <div class="col-xs-2">
-      <%= f.label "Time Box:", class: 'col-form-label' %>
+      <%= f.label "Time Box (em semanas):", class: 'col-form-label' %>
     </div>
     <div class="col-xs-2">
-      <%= f.text_field :timebox_cicles, class: 'form-control', placeholder: 'Time Box (weeks)' %>
+      <%= f.text_field :timebox_cicles, class: 'form-control', placeholder: 'Time Box (em semanas)' %>
     </div>
     <div class="col-xs-2">
-      <%= f.label "Throughput Projection:", class: 'col-form-label' %>
+      <%= f.label "Ideia da vazão do time (cards/semana):", class: 'col-form-label' %>
     </div>
     <div class="col-xs-2">
-      <%= f.text_field :throughput_projection, class: 'form-control', placeholder: 'Throughput Projection' %>
+      <%= f.text_field :throughput_projection, class: 'form-control', placeholder: 'Ideia da vazão do time (cards/semana):' %>
     </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Selecione o algoritmo para a previsão da entrega com base nos dados reais:", class: 'lable' %>
+    <%= f.select :algorithm, %w[none repetition random], class: 'form-control' %>
   </div>
 
   <div class="form-group row">
     <div class="col-xs-4">
-      <%= f.label "Real World series data (format: 1 4 5 3 2):", class: 'col-form-label' %>
+      <%= f.label "Dados reais da vazão do time a cada semana (exemplo: 0 0 2 5 6, onde cada número representa a vazão de cards a cada semana):", class: 'col-form-label' %>
     </div>
     <div class="col-xs-8">
       <%= f.text_field :input_real_data, class: 'form-control' %>
