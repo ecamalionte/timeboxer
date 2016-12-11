@@ -22,19 +22,39 @@ class Burnup
   attribute :input_real_data, String, default: '0 0 2 5 6'
 
   def linear_projection
-    total_cicles.times.each_with_index.map{|x,i| [ "week-#{i+1}", x + i + throughput_projection] }
+    n = total_cards
+    points = []
+    while (n > 0)
+      points = points + [throughput_projection]
+      n -= throughput_projection
+    end
+    accumulated_format points
   end
 
   def real_data
     accumulated_format format_input
   end
 
-  def non_linear_projection
+  def repetition_projection
     chunck_of_cards = format_input.sum
     repetitions = total_cards / chunck_of_cards
+    mod = total_cards % chunck_of_cards
+    repetitions += 1 if mod != 0
     points = []
     repetitions.times do
       points = points + format_input
+    end
+    accumulated_format points
+  end
+
+  def random_projection
+    n = total_cards
+    list = format_input
+    points = []
+    while (n > 0)
+      item = list.sample
+      points = points + [ item ]
+      n -= item
     end
     accumulated_format points
   end

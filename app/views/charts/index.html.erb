@@ -7,20 +7,29 @@
 <%= column_chart [
   { name: "Linear Prediction", data: @burnup.linear_projection },
   { name: "Real World", data: @burnup.real_data },
-], id: 'burnup', width: "800px", height: "500px"
+ # { name: "Repetition Prediction", data: @burnup.repetition_projection },
+  { name: "Random Prediction", data: @burnup.random_projection },
+], id: 'burnup', width: "1200px", height: "500px"
 %>
 
 
 <script type="text/javascript">
   var canvas = $('canvas')[0];
   var context = canvas.getContext('2d');
+  var total_cicles = <%= @burnup.total_cicles %>;
+  var timebox_cicles = <%= @burnup.timebox_cicles %>;
 
   function drawTimeBox(){
     context.beginPath();
-    context.moveTo(<%= calculate_timebox_coordinate %> , 48);
-    context.lineTo(<%= calculate_timebox_coordinate %>, 439);
-    context.fillText('Time Box', <%= calculate_timebox_coordinate %>, 33);
+    context.moveTo(calculate_x_for_timebox(), 48);
+    context.lineTo(calculate_x_for_timebox(),439);
+    context.fillText('Time Box', calculate_x_for_timebox(), 33);
     context.stroke();
+  }
+
+  function calculate_x_for_timebox(){
+    pixels_per_cicle = canvas.width / total_cicles
+    return pixels_per_cicle * timebox_cicles
   }
 
   canvas.addEventListener('mousemove', function(evt) {
